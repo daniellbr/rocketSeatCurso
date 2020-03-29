@@ -4,7 +4,7 @@ module.exports = {
     async create(request, response) {
         const { id } = request.body; //Recebe o ID enviado no corpo da requisição 
 
-        const ong = await connection('ongs') // Vai fazer a consulta no banco a apartir do ID 
+        const ong = await connection('ongs') //Vai fazer a consulta no banco a apartir do ID 
             .where('id', id)
             .select('name')
             .first();

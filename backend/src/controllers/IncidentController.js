@@ -35,11 +35,11 @@ module.exports = {
            ong_Id,
        })
 
-       return response.json({ id }) //* Enviando com chaves junto para enviar o nome junto para o front saber o que é    }
+       return response.json({ id }) // Enviando com chaves junto para enviar o nome junto para o front saber o que é    }
     },
 
     async delete(request, response) {
-        const { id } = request.params; // recebe o id vindo do front end para ser deletado
+        const { id } = request.params; // Recebe o id vindo do front end para ser deletado
         const ong_id = request.headers.authorization; // Essa variavel ong_id serve para validar se o ID que será deletado foi criado pelo mesmo ID. É uma validação de segurança
         
         const incident = await connection('incidents')

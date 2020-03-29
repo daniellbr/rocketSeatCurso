@@ -9,8 +9,8 @@ const app = express();
 * e também para alterar o formato json para o formato que o JS interprete
  */
 
- app.use(cors());
+app.use(cors());
 app.use(express.json());
-app.use(routes); /** a partir deste momento as rotas estão definidas */
+app.use(routes); // a partir deste momento as rotas estão definidas 
 
 app.listen(3333);

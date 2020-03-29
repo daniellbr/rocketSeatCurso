@@ -26,7 +26,7 @@ routes.delete('/incidents/:id', IncidentController.delete); // Esta roda vai cri
 module.exports = routes;
 
 /**
- * Rota e recurso * 
+ * Rota e recurso  
  * Rota é todo o caminho atá o barra ex localhost:3333
  * Recurso é a extensão pos / ex /users
  **/ 

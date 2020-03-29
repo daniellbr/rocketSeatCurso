@@ -2,14 +2,18 @@ import React from 'react';
 import Header from './Header';
 
 function App() {
+  let counter = 0;
+
+  function increment(){
+    counter +=1;
+
+    console.log(counter)
+  }  
   return (
-   <Header> 
-     Semana OmniStack!
-   </Header> // Como o header não tem nenhum conteudo 
-              //ela pode ser fechada nela mesma. 
-              //Agora para aplicar o conceito de propriedades
-              //passaremos a propriedade title="Semana OmniStack"
-              //Desta maneira o Header poderá ser utilizado em varias outras paginas
+   <div>
+     <header>Contador {counter}</header>
+     <button onClick={increment}>Incrementar</button>
+   </div>
   );
 }
 

@@ -37,23 +37,28 @@ module.exports = {
 
        return response.json({ id }) // Enviando com chaves junto para enviar o nome junto para o front saber o que é    }
     },
-
+     
     async delete(request, response) {
-        const { id } = request.params; // Recebe o id vindo do front end para ser deletado
-        const ong_id = request.headers.authorization; // Essa variavel ong_id serve para validar se o ID que será deletado foi criado pelo mesmo ID. É uma validação de segurança
-        
-        const incident = await connection('incidents')
-            .where('id', id)
-            .select('ong_id')
-            .first();
-                
-        if (incident.ong_id != ong_id) {
-
-            return response.status(401).json({ error: 'Operação não autorizada.'});
-        }
-
-        await connection('incidents').where('id', id).delete();
-        
-        return response.status(204).send;
+        try {
+            debugger
+            const { id } = request.params; // Recebe o id vindo do front end para ser deletado
+            const ong_id = request.headers.authorization; // Essa variavel ong_id serve para validar se o ID que será deletado foi criado pelo mesmo ID. É uma validação de segurança
+            
+            const incident = await connection('incidents')
+                .where('id', id)
+                .select('ong_id')
+                .first();
+                    
+            if (incident.ong_id != ong_id) {
+    
+                return response.status(401).json({ error: 'Operação não autorizada.'});
+            }
+    
+            await connection('incidents').where('id', id).delete();
+            
+            return response.status(204).send('Item deletado');
+        }   catch (error) {
+            return response.status(500).send(error.message);
+        } 
     }
 }
